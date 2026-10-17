@@ -1,0 +1,112 @@
+/* ===== 全局重置 + 主题变量（延续靛蓝体系） ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --accent: #6366f1;
+  --accent-light: #eef2ff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --bg: #f9fafb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --error: #dc2626;
+}
+
+body {
+  font-family: system-ui, "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header { text-align: center; padding: 40px 20px 8px; }
+header h1 { font-size: 28px; }
+.subtitle { color: var(--muted); margin-top: 4px; }
+
+main {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+  flex: 1;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.08);
+}
+.card h2 { font-size: 16px; margin-bottom: 14px; }
+
+/* 输入框 */
+#url-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+#url-input:focus { border-color: var(--accent); }
+
+.hint {
+  min-height: 22px;
+  font-size: 13px;
+  color: var(--error);
+  margin-top: 8px;
+}
+
+/* 按钮 */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 32px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.btn-primary:hover { transform: translateY(-2px); }
+/* 没生成二维码时，保存按钮是灰的且点不动（disabled 属性由 script.js 控制） */
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 二维码展示区：空着的时候用虚线框 + CSS 占位文字 */
+.qr-box {
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 6px;
+}
+/* :empty 伪类：元素里没有任何内容时生效——生成后 canvas 出现，提示自动消失 */
+.qr-box:empty::before {
+  content: "二维码会出现在这里";
+  color: var(--muted);
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--muted);
+}
+footer a { color: var(--accent); text-decoration: none; }

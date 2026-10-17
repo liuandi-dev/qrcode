@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔗 二维码生成器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🔗 二维码生成器</h1>
+    <p class="subtitle">输入网址，一秒生成，扫码即达</p>
+  </header>
+
+  <main>
+    <!-- 功能①：输入网址 -->
+    <section class="card">
+      <h2>① 输入网址</h2>
+      <input id="url-input" type="text" placeholder="例如：liuandi-dev.github.io/homepage">
+      <button id="gen-btn" class="btn-primary">生成二维码</button>
+      <p id="hint" class="hint"></p>
+    </section>
+
+    <!-- 功能②③：显示二维码 + 保存图片 -->
+    <section class="card">
+      <h2>② 你的二维码</h2>
+      <!-- qr-box 初始为空：CSS 会用 :empty::before 显示占位提示；
+           生成后 qrcode.min.js 会往里面塞一个 canvas，提示自动消失 -->
+      <div id="qr-box" class="qr-box"></div>
+      <button id="save-btn" class="btn-primary" disabled>保存图片</button>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://liuandi-dev.github.io/homepage/" target="_blank">← 回我的主页</a>
+    <p>Andy · 100 项目挑战 · 项目 #011 · 2026.10.17 · 二维码由 qrcodejs（MIT）驱动</p>
+  </footer>
+
+  <!-- 注意顺序：先加载库，再加载我们的逻辑，不然 script.js 里找不到 QRCode -->
+  <script src="qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
