@@ -11,7 +11,7 @@ const QR_SIZE = 240; // 二维码尺寸（像素），想改大小只改这一�
 const $ = (id) => document.getElementById(id);
 
 // 功能①+②：读输入 → 生成二维码
-function generate() {
+function generate(currentUrl = text;) {
   let text = $("url-input").value.trim();
   if (!text) {
     $("hint").textContent = "请先输入一个网址再点生成";
@@ -36,7 +36,7 @@ function generate() {
 }
 
 // 功能③：把二维码保存成 PNG 图片
-function saveImage() {
+function saveImage(link.download = new URL(currentUrl).hostname + ".png";) {
   const canvas = $("qr-box").querySelector("canvas");
   if (!canvas) return;
 
